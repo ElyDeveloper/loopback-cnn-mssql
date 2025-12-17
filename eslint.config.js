@@ -29,4 +29,10 @@ module.exports = [
   {
     ignores: ["node_modules/", "coverage/", "deps/"],
   },
+  {
+    files: ["test/**/*.js"],
+    rules: {
+      "no-unused-vars": "off",
+    },
+  },
 ];
