@@ -2,7 +2,7 @@ Copyright (c) IBM Corp. 2012,2018. All Rights Reserved.
 Node module: loopback-connector-mssql
 This project is licensed under the MIT License, full text below.
 
---------
+---
 
 MIT license
 

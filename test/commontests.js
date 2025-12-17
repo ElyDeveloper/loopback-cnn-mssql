@@ -3,11 +3,11 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-'use strict';
-const jdb = require('loopback-datasource-juggler');
+"use strict";
+const jdb = require("loopback-datasource-juggler");
 const commonTest = jdb.test;
 
-require('./init');
+require("./init");
 
 /* global getDataSource */
 const schema = getDataSource();
@@ -16,24 +16,24 @@ const schema = getDataSource();
 commonTest(module.exports, schema);
 
 // skip the order test from jugglingdb, it wasn't working right
-commonTest.skip('should handle ORDER clause');
+commonTest.skip("should handle ORDER clause");
 
 // re-implement the order test as pretty much the same thing, but run an automigration beforehand
-commonTest.it('should automigrate', function(test) {
-  schema.automigrate(function(err) {
+commonTest.it("should automigrate", function (test) {
+  schema.automigrate(function (err) {
     test.ifError(err);
     test.done();
   });
 });
 
-commonTest.it('should be able to ORDER results', function(test) {
+commonTest.it("should be able to ORDER results", function (test) {
   const titles = [
-    {title: 'Title A', subject: 'B'},
-    {title: 'Title Z', subject: 'A'},
-    {title: 'Title M', subject: 'C'},
-    {title: 'Title A', subject: 'A'},
-    {title: 'Title B', subject: 'A'},
-    {title: 'Title C', subject: 'D'},
+    { title: "Title A", subject: "B" },
+    { title: "Title Z", subject: "A" },
+    { title: "Title M", subject: "C" },
+    { title: "Title A", subject: "A" },
+    { title: "Title B", subject: "A" },
+    { title: "Title C", subject: "D" },
   ];
 
   const dates = [
@@ -45,8 +45,11 @@ commonTest.it('should be able to ORDER results', function(test) {
     new Date(1000 * 9),
   ];
 
-  titles.forEach(function(t, i) {
-    schema.models.Post.create({title: t.title, subject: t.subject, date: dates[i]}, done);
+  titles.forEach(function (t, i) {
+    schema.models.Post.create(
+      { title: t.title, subject: t.subject, date: dates[i] },
+      done,
+    );
   });
   let i = 0;
   let tests = 0;
@@ -69,10 +72,10 @@ commonTest.it('should be able to ORDER results', function(test) {
 
   function doStringTest() {
     tests += 1;
-    schema.models.Post.all({order: 'title'}, function(err, posts) {
+    schema.models.Post.all({ order: "title" }, function (err, posts) {
       if (err) console.log(err);
       test.equal(posts.length, 6);
-      titles.sort(compare).forEach(function(t, i) {
+      titles.sort(compare).forEach(function (t, i) {
         if (posts[i]) test.equal(posts[i].title, t.title);
       });
       finished();
@@ -81,12 +84,12 @@ commonTest.it('should be able to ORDER results', function(test) {
 
   function doNumberTest() {
     tests += 1;
-    schema.models.Post.all({order: 'date'}, function(err, posts) {
+    schema.models.Post.all({ order: "date" }, function (err, posts) {
       if (err) console.log(err);
       test.equal(posts.length, 6);
-      dates.sort(numerically).forEach(function(d, i) {
+      dates.sort(numerically).forEach(function (d, i) {
         if (posts[i])
-          test.equal(posts[i].date.toString(), d.toString(), 'doNumberTest');
+          test.equal(posts[i].date.toString(), d.toString(), "doNumberTest");
       });
       finished();
     });
@@ -94,60 +97,71 @@ commonTest.it('should be able to ORDER results', function(test) {
 
   function doFilterAndSortTest() {
     tests += 1;
-    schema.models.Post.all({where: {date: new Date(1000 * 9)}, order: 'title', limit: 3}, function(err, posts) {
-      if (err) console.log(err);
-      console.log(posts.length);
-      test.equal(posts.length, 2, 'Exactly 2 posts returned by query');
-      ['Title C', 'Title Z'].forEach(function(t, i) {
-        if (posts[i]) {
-          test.equal(posts[i].title, t, 'doFilterAndSortTest');
-        }
-      });
-      finished();
-    });
+    schema.models.Post.all(
+      { where: { date: new Date(1000 * 9) }, order: "title", limit: 3 },
+      function (err, posts) {
+        if (err) console.log(err);
+        console.log(posts.length);
+        test.equal(posts.length, 2, "Exactly 2 posts returned by query");
+        ["Title C", "Title Z"].forEach(function (t, i) {
+          if (posts[i]) {
+            test.equal(posts[i].title, t, "doFilterAndSortTest");
+          }
+        });
+        finished();
+      },
+    );
   }
 
   function doFilterAndSortReverseTest() {
     tests += 1;
-    schema.models.Post.all({where: {date: new Date(1000 * 9)}, order: 'title DESC', limit: 3},
-      function(err, posts) {
+    schema.models.Post.all(
+      { where: { date: new Date(1000 * 9) }, order: "title DESC", limit: 3 },
+      function (err, posts) {
         if (err) console.log(err);
-        test.equal(posts.length, 2, 'Exactly 2 posts returned by query');
-        ['Title Z', 'Title C'].forEach(function(t, i) {
+        test.equal(posts.length, 2, "Exactly 2 posts returned by query");
+        ["Title Z", "Title C"].forEach(function (t, i) {
           if (posts[i]) {
-            test.equal(posts[i].title, t, 'doFilterAndSortReverseTest');
+            test.equal(posts[i].title, t, "doFilterAndSortReverseTest");
           }
         });
         finished();
-      });
+      },
+    );
   }
 
   function doMultipleSortTest() {
     tests += 1;
-    schema.models.Post.all({order: 'title ASC, subject ASC'}, function(err, posts) {
-      if (err) console.log(err);
-      test.equal(posts.length, 6);
-      test.equal(posts[0].title, 'Title A');
-      test.equal(posts[0].subject, 'A');
-      test.equal(posts[1].title, 'Title A');
-      test.equal(posts[1].subject, 'B');
-      test.equal(posts[5].title, 'Title Z');
-      finished();
-    });
+    schema.models.Post.all(
+      { order: "title ASC, subject ASC" },
+      function (err, posts) {
+        if (err) console.log(err);
+        test.equal(posts.length, 6);
+        test.equal(posts[0].title, "Title A");
+        test.equal(posts[0].subject, "A");
+        test.equal(posts[1].title, "Title A");
+        test.equal(posts[1].subject, "B");
+        test.equal(posts[5].title, "Title Z");
+        finished();
+      },
+    );
   }
 
   function doMultipleReverseSortTest() {
     tests += 1;
-    schema.models.Post.all({order: 'title ASC, subject DESC'}, function(err, posts) {
-      if (err) console.log(err);
-      test.equal(posts.length, 6);
-      test.equal(posts[0].title, 'Title A');
-      test.equal(posts[0].subject, 'B');
-      test.equal(posts[1].title, 'Title A');
-      test.equal(posts[1].subject, 'A');
-      test.equal(posts[5].title, 'Title Z');
-      finished();
-    });
+    schema.models.Post.all(
+      { order: "title ASC, subject DESC" },
+      function (err, posts) {
+        if (err) console.log(err);
+        test.equal(posts.length, 6);
+        test.equal(posts[0].title, "Title A");
+        test.equal(posts[0].subject, "B");
+        test.equal(posts[1].title, "Title A");
+        test.equal(posts[1].subject, "A");
+        test.equal(posts[5].title, "Title Z");
+        finished();
+      },
+    );
   }
 
   let fin = 0;
@@ -164,40 +178,43 @@ commonTest.it('should be able to ORDER results', function(test) {
   }
 });
 
-commonTest.it('should count posts', function(test) {
+commonTest.it("should count posts", function (test) {
   test.expect(2);
-  schema.models.Post.count({title: 'Title A'}, function(err, cnt) {
+  schema.models.Post.count({ title: "Title A" }, function (err, cnt) {
     test.ifError(err);
     test.equal(cnt, 2);
     test.done();
   });
 });
 
-commonTest.it('should delete a post', function(test) {
-  schema.models.Post.all({
-    where: {
-      title: 'Title Z',
+commonTest.it("should delete a post", function (test) {
+  schema.models.Post.all(
+    {
+      where: {
+        title: "Title Z",
+      },
     },
-  }, function(err, posts) {
-    test.ifError(err);
-    test.equal(posts.length, 1);
-    const id = posts[0].id;
-    posts[0].destroy(function(err) {
+    function (err, posts) {
       test.ifError(err);
-      schema.models.Post.find(id, function(err, post) {
+      test.equal(posts.length, 1);
+      const id = posts[0].id;
+      posts[0].destroy(function (err) {
         test.ifError(err);
-        test.equal(post, null);
-        test.done();
+        schema.models.Post.find(id, function (err, post) {
+          test.ifError(err);
+          test.equal(post, null);
+          test.done();
+        });
       });
-    });
-  });
+    },
+  );
 });
 
-commonTest.it('should delete all posts', function(test) {
+commonTest.it("should delete all posts", function (test) {
   test.expect(3);
-  schema.models.Post.destroyAll(function(err) {
+  schema.models.Post.destroyAll(function (err) {
     test.ifError(err);
-    schema.models.Post.count(function(err, cnt) {
+    schema.models.Post.count(function (err, cnt) {
       test.ifError(err);
       test.equal(cnt, 0);
       test.done();
@@ -206,9 +223,9 @@ commonTest.it('should delete all posts', function(test) {
 });
 
 // custom primary keys not quite working :(, hopefully 1602 will implement that functionality in jugglingdb soon.
-commonTest.it('should support custom primary key', function(test) {
+commonTest.it("should support custom primary key", function (test) {
   test.expect(3);
-  const AppliesTo = schema.define('AppliesTo', {
+  const AppliesTo = schema.define("AppliesTo", {
     AppliesToID: {
       type: Number,
       primaryKey: true,
@@ -226,12 +243,15 @@ commonTest.it('should support custom primary key', function(test) {
     },
   });
 
-  schema.automigrate(function(err) {
+  schema.automigrate(function (err) {
     test.ifError(err);
-    AppliesTo.create({Title: 'custom key', Identifier: 'ck', Editable: false}, function(err, data) {
-      test.ifError(err);
-      test.notStrictEqual(typeof data.AppliesToID, 'undefined');
-      test.done();
-    });
+    AppliesTo.create(
+      { Title: "custom key", Identifier: "ck", Editable: false },
+      function (err, data) {
+        test.ifError(err);
+        test.notStrictEqual(typeof data.AppliesToID, "undefined");
+        test.done();
+      },
+    );
   });
 });

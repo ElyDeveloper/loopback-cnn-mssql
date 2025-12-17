@@ -5,18 +5,18 @@ administered by IBM.
 
 Contributing to `loopback-connector-mssql` is easy. In a few simple steps:
 
-  * Ensure that your effort is aligned with the project's roadmap by
-    talking to the maintainers, especially if you are going to spend a
-    lot of time on it.
+- Ensure that your effort is aligned with the project's roadmap by
+  talking to the maintainers, especially if you are going to spend a
+  lot of time on it.
 
-  * Make something better or fix a bug.
+- Make something better or fix a bug.
 
-  * Adhere to code style outlined in the [Google C++ Style Guide][] and
-    [Google Javascript Style Guide][].
+- Adhere to code style outlined in the [Google C++ Style Guide][] and
+  [Google Javascript Style Guide][].
 
-  * [Sign](https://loopback.io/doc/en/contrib/code-contrib.html) all commits with DCO.
+- [Sign](https://loopback.io/doc/en/contrib/code-contrib.html) all commits with DCO.
 
-  * Submit a pull request through Github.
+- Submit a pull request through Github.
 
 ### Developer Certificate of Origin
 
@@ -31,7 +31,6 @@ git commit -s -m "feat: my commit message"
 ```
 
 Also see the [Contributing to LoopBack](https://loopback.io/doc/en/contrib/code-contrib.html) to get you started.
-
 
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
 [Google Javascript Style Guide]: https://google.github.io/styleguide/javascriptguide.xml

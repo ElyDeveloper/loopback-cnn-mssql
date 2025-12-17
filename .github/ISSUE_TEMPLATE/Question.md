@@ -2,7 +2,6 @@
 name: Question
 about: The issue tracker is not for questions. Please use Stack Overflow or other resources for help.
 labels: question
-
 ---
 
 <!-- 🚨 STOP 🚨 STOP 🚨 STOP 🚨

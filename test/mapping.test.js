@@ -3,65 +3,66 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-'use strict';
-const should = require('should');
-require('./init');
+"use strict";
+const should = require("should");
+require("./init");
 
-const async = require('async');
+const async = require("async");
 
 let db;
 
-before(function() {
+before(function () {
   /* global getDataSource */
   db = getDataSource();
 });
 
-describe('Mapping models', function() {
-  it('should honor the mssql settings for table/column', function(done) {
+describe("Mapping models", function () {
+  it("should honor the mssql settings for table/column", function (done) {
     const schema = {
-      name: 'TestInventory',
+      name: "TestInventory",
       options: {
         idInjection: false,
         mssql: {
-          schema: 'dbo', table: 'INVENTORYTEST',
+          schema: "dbo",
+          table: "INVENTORYTEST",
         },
       },
       properties: {
         productId: {
-          type: 'Number',
+          type: "Number",
           id: true,
           generated: true,
           mssql: {
-            columnName: 'PRODUCT_ID',
-            nullable: 'N',
+            columnName: "PRODUCT_ID",
+            nullable: "N",
           },
         },
         locationId: {
-          type: 'String',
+          type: "String",
           required: true,
           length: 20,
           mssql: {
-            columnName: 'LOCATION_ID',
-            dataType: 'nvarchar',
-            nullable: 'N',
+            columnName: "LOCATION_ID",
+            dataType: "nvarchar",
+            nullable: "N",
           },
         },
         available: {
-          type: 'Number',
+          type: "Number",
           required: false,
           mssql: {
-            columnName: 'AVAILABLE',
-            dataType: 'int',
-            nullable: 'Y',
+            columnName: "AVAILABLE",
+            dataType: "int",
+            nullable: "Y",
           },
         },
         total: {
-          type: 'Number',
+          type: "Number",
           required: false,
           mssql: {
-            columnName: 'TOTAL',
-            dataType: 'int',
-            nullable: 'Y',
+            columnName: "TOTAL",
+            dataType: "int",
+            nullable: "Y",
           },
         },
       },
@@ -70,51 +71,62 @@ describe('Mapping models', function() {
     const Model = models.TestInventory;
     Model.attachTo(db);
 
-    db.automigrate(function(err, data) {
-      async.series([
-        function(callback) {
-          Model.destroyAll(callback);
-        },
-        function(callback) {
-          Model.create({locationId: 'l001', available: 10, total: 50},
-            callback);
-        },
-        function(callback) {
-          Model.create({locationId: 'l002', available: 30, total: 40},
-            callback);
-        },
-        function(callback) {
-          Model.create({locationId: 'l001', available: 15, total: 30},
-            callback);
-        },
-        function(callback) {
-          Model.find({fields: ['productId', 'locationId', 'available']},
-            function(err, results) {
+    db.automigrate(function (err, data) {
+      async.series(
+        [
+          function (callback) {
+            Model.destroyAll(callback);
+          },
+          function (callback) {
+            Model.create(
+              { locationId: "l001", available: 10, total: 50 },
+              callback,
+            );
+          },
+          function (callback) {
+            Model.create(
+              { locationId: "l002", available: 30, total: 40 },
+              callback,
+            );
+          },
+          function (callback) {
+            Model.create(
+              { locationId: "l001", available: 15, total: 30 },
+              callback,
+            );
+          },
+          function (callback) {
+            Model.find(
+              { fields: ["productId", "locationId", "available"] },
+              function (err, results) {
+                // console.log(results);
+                results.should.have.lengthOf(3);
+                results.forEach(function (r) {
+                  r.should.have.property("productId");
+                  r.should.have.property("locationId");
+                  r.should.have.property("available");
+                  should.equal(r.total, undefined);
+                });
+                callback(null, results);
+              },
+            );
+          },
+          function (callback) {
+            Model.find({ fields: { total: false } }, function (err, results) {
               // console.log(results);
               results.should.have.lengthOf(3);
-              results.forEach(function(r) {
-                r.should.have.property('productId');
-                r.should.have.property('locationId');
-                r.should.have.property('available');
+              results.forEach(function (r) {
+                r.should.have.property("productId");
+                r.should.have.property("locationId");
+                r.should.have.property("available");
                 should.equal(r.total, undefined);
               });
               callback(null, results);
             });
-        },
-        function(callback) {
-          Model.find({fields: {'total': false}}, function(err, results) {
-            // console.log(results);
-            results.should.have.lengthOf(3);
-            results.forEach(function(r) {
-              r.should.have.property('productId');
-              r.should.have.property('locationId');
-              r.should.have.property('available');
-              should.equal(r.total, undefined);
-            });
-            callback(null, results);
-          });
-        },
-      ], done);
+          },
+        ],
+        done,
+      );
     });
   });
 });

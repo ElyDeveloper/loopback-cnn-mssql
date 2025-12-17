@@ -1,447 +1,367 @@
-2020-03-10, Version 3.8.0
-=========================
+# 2020-03-10, Version 3.8.0
 
- * Exclude `deps` and `.github` from npm publish (Raymond Feng)
+- Exclude `deps` and `.github` from npm publish (Raymond Feng)
 
- * Remove obsolete npm script to delete regenerator (Raymond Feng)
+- Remove obsolete npm script to delete regenerator (Raymond Feng)
 
- * chore: update CODEOWNERS (Diana Lau)
+- chore: update CODEOWNERS (Diana Lau)
 
- * chore: update copyrights year (Diana Lau)
+- chore: update copyrights year (Diana Lau)
 
- * fix problem setting passwords with chars like '(' (Francisco Buceta)
+- fix problem setting passwords with chars like '(' (Francisco Buceta)
 
+# 2020-01-22, Version 3.7.0
 
-2020-01-22, Version 3.7.0
-=========================
+- add tests for limit&limit with supportsOffsetFetch (Francisco Buceta)
 
- * add tests for limit&limit with supportsOffsetFetch (Francisco Buceta)
+- add missing 'ORDER BY' before 'OFFSET' (Rifa Achrinza)
 
- * add missing 'ORDER BY' before 'OFFSET' (Rifa Achrinza)
+- chore: improve issue and PR templates (Nora)
 
- * chore: improve issue and PR templates (Nora)
+# 2019-11-14, Version 3.6.0
 
+- update mssql to 6.x (Joost de Bruijn)
 
-2019-11-14, Version 3.6.0
-=========================
+# 2019-11-06, Version 3.5.0
 
- * update mssql to 6.x (Joost de Bruijn)
+- fix linter errors (Joost de Bruijn)
 
+- update mssql 5.x and mark sqlcmdjs devDependency (Joost de Bruijn)
 
-2019-11-06, Version 3.5.0
-=========================
+# 2019-09-19, Version 3.4.0
 
- * fix linter errors (Joost de Bruijn)
+- add juggler-v3 and v4 to dev dependencies (Nora)
 
- * update mssql 5.x and mark sqlcmdjs devDependency (Joost de Bruijn)
+- run shared tests from both v3 and v4 of juggler (Nora)
 
+- fix eslint violations (Nora)
 
-2019-09-19, Version 3.4.0
-=========================
+- update dependencies (Nora)
 
- * add juggler-v3 and v4 to dev dependencies (Nora)
+- update CODEOWNERS (Nora)
 
- * run shared tests from both v3 and v4 of juggler (Nora)
+- drop support for node.js 6 (Nora)
 
- * fix eslint violations (Nora)
+# 2018-08-07, Version 3.3.0
 
- * update dependencies (Nora)
+- update to MIT license (Diana Lau)
 
- * update CODEOWNERS (Nora)
+- chore: update node + dependencies (virkt25)
 
- * drop support for node.js 6 (Nora)
+- Increase test limit from 9.9 to 30 seconds (Miroslav Bajtoš)
 
+- Move Mocha config to `test/mocha.opts` (Miroslav Bajtoš)
 
-2018-08-07, Version 3.3.0
-=========================
+- [WebFM] cs/pl/ru translation (candytangnb)
 
- * update to MIT license (Diana Lau)
+# 2018-05-04, Version 3.2.1
 
- * chore: update node + dependencies (virkt25)
+- chore: update CODEOWNERS (Diana Lau)
 
- * Increase test limit from 9.9 to 30 seconds (Miroslav Bajtoš)
+- Update Queries to Uppercase (Rafael E. Ajuria)
 
- * Move Mocha config to `test/mocha.opts` (Miroslav Bajtoš)
+# 2017-11-29, Version 3.2.0
 
- * [WebFM] cs/pl/ru translation (candytangnb)
+- Implement test for single column indices (Daan Middendorp)
 
+- Fix single column index altering (Daan Middendorp)
 
-2018-05-04, Version 3.2.1
-=========================
+- Fix deletion of indices and test (Daan Middendorp)
 
- * chore: update CODEOWNERS (Diana Lau)
+- Solve index naming issue (Daan Middendorp)
 
- * Update Queries to Uppercase (Rafael E. Ajuria)
+- Test update indexes (Daan Middendorp)
 
+- Fix altering of indexes (Daan Middendorp)
 
-2017-11-29, Version 3.2.0
-=========================
+- Solved imported unittests for previous commit (Daan Middendorp)
 
- * Implement test for single column indices (Daan Middendorp)
+- Fix showIndexes function (Daan Middendorp)
 
- * Fix single column index altering (Daan Middendorp)
+- Fix bigint (jannyHou)
 
- * Fix deletion of indices and test (Daan Middendorp)
+# 2017-10-05, Version 3.1.0
 
- * Solve index naming issue (Daan Middendorp)
+- update globalize string (Diana Lau)
 
- * Test update indexes (Daan Middendorp)
+- Add stalebot configuration (Kevin Delisle)
 
- * Fix altering of indexes (Daan Middendorp)
+- Create Issue and PR Templates (#167) (Sakib Hasan)
 
- * Solved imported unittests for previous commit (Daan Middendorp)
+- Add CODEOWNER file (Diana Lau)
 
- * Fix showIndexes function (Daan Middendorp)
+- Require init on mocha args (ssh24)
 
- * Fix bigint (jannyHou)
+- Add docker setup (#148) (Sakib Hasan)
 
+- Return if column is generated or not (#100) (Christiaan Westerbeek)
 
-2017-10-05, Version 3.1.0
-=========================
+- Fix discovery of primary keys (#99) (Christiaan Westerbeek)
 
- * update globalize string (Diana Lau)
+- Remove appveyor service (#145) (Sakib Hasan)
 
- * Add stalebot configuration (Kevin Delisle)
+- Fix params for isActual function (#143) (Nguyễn Kim Kha)
 
- * Create Issue and PR Templates (#167) (Sakib Hasan)
+- Enable clean DB seed as pre-test (#142) (Sakib Hasan)
 
- * Add CODEOWNER file (Diana Lau)
+- Fix eslint issues & buildPropertyType() signature (Raymond Feng)
 
- * Require init on mocha args (ssh24)
+- Upgrade deps to mssql@4.x (Raymond Feng)
 
- * Add docker setup (#148) (Sakib Hasan)
+- add appveyor for CI (#137) (Ryan Graham)
 
- * Return if column is generated or not (#100) (Christiaan Westerbeek)
+- fix discovery turkish collation (#123) (emrahcetiner)
 
- * Fix discovery of primary keys (#99) (Christiaan Westerbeek)
+# 2017-03-31, Version 3.0.0
 
- * Remove appveyor service (#145) (Sakib Hasan)
+- Replicate issue_template from loopback repo (#120) (siddhipai)
 
- * Fix params for isActual function (#143) (Nguyễn Kim Kha)
+- Refactor alter table (#134) (Diana Lau)
 
- * Enable clean DB seed as pre-test (#142) (Sakib Hasan)
+- Upgrade to loopback-connector@4.x (Loay)
 
- * Fix eslint issues & buildPropertyType() signature (Raymond Feng)
+- Refactor migration methods (ssh24)
 
- * Upgrade deps to mssql@4.x (Raymond Feng)
+- Refactor discovery methods (Loay Gewily)
 
- * add appveyor for CI (#137) (Ryan Graham)
+- Update mocha timeout (Loay Gewily)
 
- * fix discovery turkish collation (#123) (emrahcetiner)
+- Update LB-connector version (Loay)
 
+- Add buildreplace method (Loay Gewily)
 
-2017-03-31, Version 3.0.0
-=========================
+- Update README.md (#117) (Rand McKinney)
 
- * Replicate issue_template from loopback repo (#120) (siddhipai)
+- Update w info from docs (#115) (Rand McKinney)
 
- * Refactor alter table (#134) (Diana Lau)
+- Update paid support URL (Siddhi Pai)
 
- * Upgrade to loopback-connector@4.x (Loay)
+- increase the timeout for autoupdate test (Eddie Monge)
 
- * Refactor migration methods (ssh24)
+- Start 3.x + drop support for Node v0.10/v0.12 (siddhipai)
 
- * Refactor discovery methods (Loay Gewily)
+- Drop support for Node v0.10 and v0.12 (Siddhi Pai)
 
- * Update mocha timeout (Loay Gewily)
+- Start the development of the next major version (Siddhi Pai)
 
- * Update LB-connector version (Loay)
+- Update README doc links (Candy)
 
- * Add buildreplace method (Loay Gewily)
+# 2016-10-14, Version 2.9.0
 
- * Update README.md (#117) (Rand McKinney)
+- Add connectorCapabilities global object (#102) (Nicholas Duffy)
 
- * Update w info from docs (#115) (Rand McKinney)
+- Update translation files - round#2 (Candy)
 
- * Update paid support URL (Siddhi Pai)
+- Add translated files (gunjpan)
 
- * increase the timeout for autoupdate test (Eddie Monge)
+- Update deps to loopback 3.0.0 RC (Miroslav Bajtoš)
 
- * Start 3.x + drop support for Node v0.10/v0.12 (siddhipai)
+- Update eslint infrastructure (Loay)
 
- * Drop support for Node v0.10 and v0.12 (Siddhi Pai)
+- Use juggler@3 for running tests (Simon Ho)
 
- * Start the development of the next major version (Siddhi Pai)
+- Add globalization (Candy)
 
- * Update README doc links (Candy)
+- Revert "Update Fix" (Loay)
 
+- Update Fix (Loay)
 
-2016-10-14, Version 2.9.0
-=========================
+- Update URLs in CONTRIBUTING.md (#88) (Ryan Graham)
 
- * Add connectorCapabilities global object (#102) (Nicholas Duffy)
+# 2016-06-21, Version 2.8.0
 
- * Update translation files - round#2 (Candy)
+- update copyright notices and license (Ryan Graham)
 
- * Add translated files (gunjpan)
+- Lazy connect when booting app (juehou)
 
- * Update deps to loopback 3.0.0 RC (Miroslav Bajtoš)
+- Add feature/eslint (Amir-61)
 
- * Update eslint infrastructure (Loay)
+- Fix linting errors (Amir Jafarian)
 
- * Use juggler@3 for running tests (Simon Ho)
+- Auto-update by eslint --fix (Amir Jafarian)
 
- * Add globalization (Candy)
+- Add eslint infrastructure (Amir Jafarian)
 
- * Revert "Update Fix" (Loay)
+# 2016-04-07, Version 2.7.1
 
- * Update Fix (Loay)
+- Keep float numbers (Raymond Feng)
 
- * Update URLs in CONTRIBUTING.md (#88) (Ryan Graham)
+- override other settings if url provided (juehou)
 
+# 2016-04-05, Version 2.7.0
 
-2016-06-21, Version 2.8.0
-=========================
+- Use request.input to avoid SQL injection (Raymond Feng)
 
- * update copyright notices and license (Ryan Graham)
+# 2016-03-15, Version 2.6.0
 
- * Lazy connect when booting app (juehou)
+- Remove regenerator from babel-runtime and bundle mssql (Raymond Feng)
 
- * Add feature/eslint (Amir-61)
+# 2016-03-10, Version 2.5.1
 
- * Fix linting errors (Amir Jafarian)
+- Remove the license check (Raymond Feng)
 
- * Auto-update by eslint --fix (Amir Jafarian)
+# 2016-03-04, Version 2.5.0
 
- * Add eslint infrastructure (Amir Jafarian)
+# 2016-02-19, Version 2.4.1
 
+- Remove sl-blip from dependencies (Miroslav Bajtoš)
 
-2016-04-07, Version 2.7.1
-=========================
+# 2016-02-09, Version 2.4.0
 
- * Keep float numbers (Raymond Feng)
+- Refactor Fix for Insert into Table with Active Trigger by getting the column data type instead of varchar. https://github.com/strongloop/loopback-connector-mssql/issues/21 (FoysalOsmany)
 
- * override other settings if url provided (juehou)
+- Fix for Insert into Table with Active Trigger https://github.com/strongloop/loopback-connector-mssql/issues/21 (FoysalOsmany)
 
+- Upgrade should to 8.0.2 (Simon Ho)
 
-2016-04-05, Version 2.7.0
-=========================
+- Add help for Azure SQL users (Oleksandr Sochka)
 
- * Use request.input to avoid SQL injection (Raymond Feng)
+# 2015-11-27, Version 2.3.3
 
+- Remove buildPartitionBy() that became redundant (eugene-frb)
 
-2016-03-15, Version 2.6.0
-=========================
+- Updated option that triggers PARTITION BY injection, fixed buildPartitionByFirst's 'where' argument. (eugene-frb)
 
- * Remove regenerator from babel-runtime and bundle mssql (Raymond Feng)
+# 2015-11-18, Version 2.3.2
 
+- Inject Partition By clause into buildColumnNames of SQL query for include filter (eugene-frb)
 
-2016-03-10, Version 2.5.1
-=========================
+- Refer to licenses with a link (Sam Roberts)
 
- * Remove the license check (Raymond Feng)
+- Use strongloop conventions for licensing (Sam Roberts)
 
+# 2015-09-11, Version 2.3.1
 
-2016-03-04, Version 2.5.0
-=========================
+- Allow models without PK (Raymond Feng)
 
+# 2015-08-14, Version 2.3.0
 
+- Added support to unicode (Ahmed Abdul Moniem)
 
-2016-02-19, Version 2.4.1
-=========================
+# 2015-08-13, Version 2.2.1
 
- * Remove sl-blip from dependencies (Miroslav Bajtoš)
+- Allow the `multipleResultSets` flag for execute (Raymond Feng)
 
+# 2015-07-29, Version 2.2.0
 
-2016-02-09, Version 2.4.0
-=========================
+- Add support for regex operator (Simon Ho)
 
- * Refactor Fix for Insert into Table with Active Trigger by getting the column data type instead of varchar. https://github.com/strongloop/loopback-connector-mssql/issues/21 (FoysalOsmany)
+# 2015-05-18, Version 2.1.0
 
- * Fix for Insert into Table with Active Trigger https://github.com/strongloop/loopback-connector-mssql/issues/21 (FoysalOsmany)
+- Update deps (Raymond Feng)
 
- * Upgrade should to 8.0.2 (Simon Ho)
+- Add transaction support (Raymond Feng)
 
- * Add help for Azure SQL users (Oleksandr Sochka)
+# 2015-05-13, Version 2.0.0
 
+- Update deps (Raymond Feng)
 
-2015-11-27, Version 2.3.3
-=========================
+- Refactor the mssql connector to use base SqlConnector (Raymond Feng)
 
- * Remove buildPartitionBy() that became redundant (eugene-frb)
+- Use SET IDENTITY_INSERT option to allow explicit id (Raymond Feng)
 
- * Updated option that triggers PARTITION BY injection, fixed buildPartitionByFirst's 'where' argument. (eugene-frb)
+- Return count when updating or deleting models (Simon Ho)
 
+- Add strongloop license check (Raymond Feng)
 
-2015-11-18, Version 2.3.2
-=========================
+- Add "Running tests" section to readme (Simon Ho)
 
- * Inject Partition By clause into buildColumnNames of SQL query for include filter (eugene-frb)
+# 2015-03-02, Version 1.5.1
 
- * Refer to licenses with a link (Sam Roberts)
+- Test if the id is generated (Raymond Feng)
 
- * Use strongloop conventions for licensing (Sam Roberts)
+- add test case for id manipulation (Ido Shamun)
 
+- Add support for custom column mapping in primary key column Add support for idInjection (Ido Shamun)
 
-2015-09-11, Version 2.3.1
-=========================
+# 2015-02-20, Version 1.5.0
 
- * Allow models without PK (Raymond Feng)
+- Add support for custom column mapping (Raymond Feng)
 
+# 2015-01-27, Version 1.4.0
 
-2015-08-14, Version 2.3.0
-=========================
+- Fix the empty column list (Raymond Feng)
 
- * Added support to unicode (Ahmed Abdul Moniem)
+- Increase the limit to make sure other owners are selected (Raymond Feng)
 
+- Enhance id to pk mapping (Raymond Feng)
 
-2015-08-13, Version 2.2.1
-=========================
+- Fix: empty inq/nin function correctly (bitmage)
 
- * Allow the `multipleResultSets` flag for execute (Raymond Feng)
+# 2015-01-09, Version 1.3.0
 
+- Fix SQL injection (Raymond Feng)
 
-2015-07-29, Version 2.2.0
-=========================
+- Fix bad CLA URL in CONTRIBUTING.md (Ryan Graham)
 
- * Add support for regex operator (Simon Ho)
+# 2014-12-08, Version 1.2.0
 
+- Update test dep (Raymond Feng)
 
-2015-05-18, Version 2.1.0
-=========================
+- Fix the missing var (Raymond Feng)
 
- * Update deps (Raymond Feng)
+- fixed race condition causing incorrect IDs to be reported on INSERT (bitmage)
 
- * Add transaction support (Raymond Feng)
+- handle precision and scale (bitmage)
 
+# 2014-12-05, Version 1.1.6
 
-2015-05-13, Version 2.0.0
-=========================
+- Update deps (Raymond Feng)
 
- * Update deps (Raymond Feng)
+- Map required/id properties to NOT NULL (Raymond Feng)
 
- * Refactor the mssql connector to use base SqlConnector (Raymond Feng)
+# 2014-11-27, Version 1.1.5
 
- * Use SET IDENTITY_INSERT option to allow explicit id (Raymond Feng)
+- Update README.md (Rand McKinney)
 
- * Return count when updating or deleting models (Simon Ho)
+- Add contribution guidelines (Ryan Graham)
 
- * Add strongloop license check (Raymond Feng)
+# 2014-09-11, Version 1.1.4
 
- * Add "Running tests" section to readme (Simon Ho)
+- Bump version (Raymond Feng)
 
+- Bump versions (Raymond Feng)
 
-2015-03-02, Version 1.5.1
-=========================
+- Make sure errors are reported for automigrate/autoupdate (Raymond Feng)
 
- * Test if the id is generated (Raymond Feng)
+# 2014-08-25, Version 1.1.3
 
- * add test case for id manipulation (Ido Shamun)
+- Bump version (Raymond Feng)
 
- * Add support for custom column mapping in primary key column Add support for idInjection (Ido Shamun)
+- Remove ON[PRIMARY] option (Raymond Feng)
 
+# 2014-08-20, Version 1.1.2
 
-2015-02-20, Version 1.5.0
-=========================
+- Bump version (Raymond Feng)
 
- * Add support for custom column mapping (Raymond Feng)
+- Add ping() (Raymond Feng)
 
+# 2014-06-27, Version 1.1.1
 
-2015-01-27, Version 1.4.0
-=========================
+- Bump versions (Raymond Feng)
 
- * Fix the empty column list (Raymond Feng)
+- Tidy up filter.order parsing (Raymond Feng)
 
- * Increase the limit to make sure other owners are selected (Raymond Feng)
+- Update link to doc (Rand McKinney)
 
- * Enhance id to pk mapping (Raymond Feng)
+- Bump version (Raymond Feng)
 
- * Fix: empty inq/nin function correctly (bitmage)
+# 2014-06-23, Version 1.1.0
 
+- Use base connector and add update support (Raymond Feng)
 
-2015-01-09, Version 1.3.0
-=========================
+- Fix comparison for null/boolean values (Raymond Feng)
 
- * Fix SQL injection (Raymond Feng)
+- Updated to allow global replacement (Jason Douglas)
 
- * Fix bad CLA URL in CONTRIBUTING.md (Ryan Graham)
+- Update mssql.js to properly escape ' chars (Jason Douglas)
 
+- Remove 'module deps' from JSDocs (Rand McKinney)
 
-2014-12-08, Version 1.2.0
-=========================
+- Replace old README with link to docs and basic info. (Rand McKinney)
 
- * Update test dep (Raymond Feng)
+- Create docs.json (Rand McKinney)
 
- * Fix the missing var (Raymond Feng)
+# 2014-05-16, Version 1.0.1
 
- * fixed race condition causing incorrect IDs to be reported on INSERT (bitmage)
-
- * handle precision and scale (bitmage)
-
-
-2014-12-05, Version 1.1.6
-=========================
-
- * Update deps (Raymond Feng)
-
- * Map required/id properties to NOT NULL (Raymond Feng)
-
-
-2014-11-27, Version 1.1.5
-=========================
-
- * Update README.md (Rand McKinney)
-
- * Add contribution guidelines (Ryan Graham)
-
-
-2014-09-11, Version 1.1.4
-=========================
-
- * Bump version (Raymond Feng)
-
- * Bump versions (Raymond Feng)
-
- * Make sure errors are reported for automigrate/autoupdate (Raymond Feng)
-
-
-2014-08-25, Version 1.1.3
-=========================
-
- * Bump version (Raymond Feng)
-
- * Remove ON[PRIMARY] option (Raymond Feng)
-
-
-2014-08-20, Version 1.1.2
-=========================
-
- * Bump version (Raymond Feng)
-
- * Add ping() (Raymond Feng)
-
-
-2014-06-27, Version 1.1.1
-=========================
-
- * Bump versions (Raymond Feng)
-
- * Tidy up filter.order parsing (Raymond Feng)
-
- * Update link to doc (Rand McKinney)
-
- * Bump version (Raymond Feng)
-
-
-2014-06-23, Version 1.1.0
-=========================
-
- * Use base connector and add update support (Raymond Feng)
-
- * Fix comparison for null/boolean values (Raymond Feng)
-
- * Updated to allow global replacement (Jason Douglas)
-
- * Update mssql.js to properly escape ' chars (Jason Douglas)
-
- * Remove 'module deps' from JSDocs (Rand McKinney)
-
- * Replace old README with link to docs and basic info. (Rand McKinney)
-
- * Create docs.json (Rand McKinney)
-
-
-2014-05-16, Version 1.0.1
-=========================
-
- * First release!
+- First release!

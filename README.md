@@ -23,11 +23,12 @@ If you create a SQL Server data source using the data source generator as descri
 
 Use the [Data source generator](http://loopback.io/doc/en/lb3/Data-source-generator.html) to add a SQL Server data source to your application.  
 The generator will prompt for the database server hostname, port, and other settings
-required to connect to a SQL Server database.  It will also run the `npm install` command above for you.
+required to connect to a SQL Server database. It will also run the `npm install` command above for you.
 
 The entry in the application's `/server/datasources.json` will look like this (for example):
 
 {% include code-caption.html content="/server/datasources.json" %}
+
 ```javascript
 "sqlserverdb": {
     "name": "sqlserverdb",
@@ -140,25 +141,26 @@ Instead of specifying individual connection properties, you can use a single `ur
 The application will automatically load the data source when it starts. You can then refer to it in code, for example:
 
 {% include code-caption.html content="/server/boot/script.js" %}
+
 ```javascript
-var app = require('./app');
+var app = require("./app");
 var dataSource = app.dataSources.accountDB;
 ```
 
 Alternatively, you can create the data source in application code; for example:
 
 {% include code-caption.html content="/server/script.js" %}
+
 ```javascript
 var DataSource = require('loopback-datasource-juggler').DataSource;
 var dataSource = new DataSource('mssql', config);
 config = { ... };  // JSON object as specified above in "Connector settings"
 ```
 
-
 ### Model discovery
 
 The SQL Server connector supports _model discovery_ that enables you to create LoopBack models
-based on an existing database schema using the unified [database discovery API](http://apidocs.strongloop.com/loopback-datasource-juggler/#datasource-prototype-discoverandbuildmodels).  For more information on discovery, see [Discovering models from relational databases](https://loopback.io/doc/en/lb3/Discovering-models-from-relational-databases.html).
+based on an existing database schema using the unified [database discovery API](http://apidocs.strongloop.com/loopback-datasource-juggler/#datasource-prototype-discoverandbuildmodels). For more information on discovery, see [Discovering models from relational databases](https://loopback.io/doc/en/lb3/Discovering-models-from-relational-databases.html).
 
 ### Auto-migratiion
 
@@ -174,14 +176,15 @@ Destroying models may result in errors due to foreign key integrity. First delet
 
 The model definition consists of the following properties:
 
-* `name`: Name of the model, by default, the table name in camel-case.
-* `options`: Model-level operations and mapping to Microsoft SQL Server schema/table. Use the `mssql` model property to specify additional SQL Server-specific properties for a LoopBack model.
-* `properties`: Property definitions, including mapping to Microsoft SQL Server columns.
+- `name`: Name of the model, by default, the table name in camel-case.
+- `options`: Model-level operations and mapping to Microsoft SQL Server schema/table. Use the `mssql` model property to specify additional SQL Server-specific properties for a LoopBack model.
+- `properties`: Property definitions, including mapping to Microsoft SQL Server columns.
   - For each property, use the `mssql` key to specify additional settings for that property/field.
 
 For example:
 
 {% include code-caption.html content="/common/models/inventory.json" %}
+
 ```javascript
 {"name": "Inventory", 
      "options": {
@@ -361,24 +364,35 @@ See [LoopBack types](http://loopback.io/doc/en/lb3/LoopBack-types.html) for det
 ## Running tests
 
 ### Own instance
+
 If you have a local or remote MSSQL instance and would like to use that to run the test suite, use the following command:
+
 - Linux
+
 ```bash
 MSSQL_HOST=<HOST> MSSQL_PORT=<PORT> MSSQL_USER=<USER> MSSQL_PASSWORD=<PASSWORD> MSSQL_DATABASE=<DATABASE> CI=true npm test
 ```
+
 - Windows
+
 ```bash
 SET MSSQL_HOST=<HOST> SET MSSQL_PORT=<PORT> SET MSSQL_USER=<USER> SET MSSQL_PASSWORD=<PASSWORD> SET MSSQL_DATABASE=<DATABASE> SET CI=true npm test
 ```
 
 ### Docker
+
 If you do not have a local MSSQL instance, you can also run the test suite with very minimal requirements.
+
 - Assuming you have [Docker](https://docs.docker.com/engine/installation/) installed, run the following script which would spawn a MSSQL instance on your local:
+
 ```bash
 source setup.sh <HOST> <PORT> <USER> <PASSWORD> <DATABASE>
 ```
+
 where `<HOST>`, `<PORT>`, `<USER>`, `<PASSWORD>` and `<DATABASE>` are optional parameters. The default values are `localhost`, `1433`, `sa`, `M55sqlT35t` and `master` respectively.
+
 - Run the test:
+
 ```bash
 npm test
 ```
