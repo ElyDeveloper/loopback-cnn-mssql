@@ -1,11 +1,18 @@
 {
-  "extends": "loopback",
+  "env": {
+    "node": true,
+    "es2021": true,
+    "mocha": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
   "rules": {
-    "max-len": ["error", 140, 4, {
-      "ignoreComments": true,
-      "ignoreUrls": true,
-      "ignorePattern": "^\\s*var\\s.+=\\s*(require\\s*\\()|(/)"
-    }],
-    "no-unused-expressions": "off"
-   }
+    "no-console": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  }
 }

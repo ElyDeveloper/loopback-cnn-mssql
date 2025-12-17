@@ -1,7 +1,7 @@
 {
-  "name": "loopback-connector-mssql",
-  "version": "3.8.0",
-  "description": "Microsoft SQL Server connector for LoopBack",
+  "name": "loopback-cnn-mssql",
+  "version": "1.0.0",
+  "description": "Modern Microsoft SQL Server connector for LoopBack",
   "engines": {
     "node": ">=10"
   },
@@ -16,23 +16,25 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "async": "^3.1.0",
-    "debug": "^4.3.1",
-    "loopback-connector": "^5.0.1",
-    "mssql": "^6.4.0",
-    "strong-globalize": "^5.0.0"
+    "async": "^3.2.6",
+    "debug": "^4.4.3",
+    "loopback-connector": "^7.0.1",
+    "mssql": "^12.2.0",
+    "strong-globalize": "^6.0.6"
   },
   "devDependencies": {
-    "bluebird": "^3.5.5",
-    "eslint": "^7.0.0",
-    "eslint-config-loopback": "^13.1.0",
+    "bluebird": "^3.7.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.1",
     "juggler-v3": "file:./deps/juggler-v3",
     "juggler-v4": "file:./deps/juggler-v4",
     "loopback-datasource-juggler": "^3.0.0 || ^4.0.0",
-    "mocha": "^6.1.4",
+    "mocha": "^11.7.5",
     "rc": "^1.2.8",
     "should": "^13.2.3",
-    "sinon": "^6.1.3",
+    "sinon": "^21.0.0",
     "sqlcmdjs": "^1.5.0"
   },
   "scripts": {
