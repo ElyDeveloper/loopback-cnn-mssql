@@ -1,6 +1,6 @@
 {
   "name": "loopback-cnn-mssql",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Modern Microsoft SQL Server connector for LoopBack",
   "engines": {
     "node": ">=10"
